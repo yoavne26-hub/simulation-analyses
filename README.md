@@ -113,6 +113,7 @@ The system computes:
 - Best-performing scenario identification  
 
 ---
+# Main Screen
 
 ## Interface Preview
 
@@ -197,7 +198,7 @@ Residual analysis verifies:
 
 ### 8. Q-Q Normality Check
 
-![Q-Q Plot](images/qqplot.png)
+![Q-Q Plot](screenshots/qqplot.png)
 
 Assesses residual normality using theoretical quantiles.
 
@@ -239,4 +240,13 @@ Summarizes:
 - Significant predictors  
 - Model validity  
 - Stability assessment  
-- Final recommendation  
+- Final recommendation
+
+  ---
+
+## Launch Yourself
+
+Launch locally:
+
+```bash
+python webapp.py
