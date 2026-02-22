@@ -61,7 +61,7 @@ Features:
 
 ---
 
-## Regression Model
+## Regression Base Model
 
 Primary model:
 
@@ -120,3 +120,132 @@ Launch locally:
 
 ```bash
 python webapp.py
+
+---
+
+## Interface Preview
+
+### 1. Home Screen
+
+![Home Screen](screenshots/simuhome.png)
+
+The main dashboard provides centralized control for running simulations and executing regression analysis.  
+Users can select scenarios, configure replication count, define seeds, and toggle advanced modeling options such as robust standard errors and ridge regularization.
+
+---
+
+### 2. Simulation Controls & Regression Panel
+
+![Simulation Controls](screenshots/simuhome2.png)
+
+The interface separates operational simulation controls from econometric configuration.  
+This enforces a clean workflow: generate data → specify model → run diagnostics.
+
+---
+
+### 3. Simulation Execution State
+
+![Simulation Loading](screenshots/loading_simu.png)
+
+During execution, the system displays:
+
+- Current scenario  
+- Run index  
+- Total runs  
+- Estimated time remaining  
+- Progress tracking  
+
+This enables transparency during long Monte Carlo runs.
+
+---
+
+### 4. Scenario Revenue Overview
+
+![Scenario Revenue Overview](screenshots/scenario_revenue_overview.png)
+
+Aggregated scenario-level revenue comparison.  
+Supports ROI evaluation and investment strategy comparison.
+
+---
+
+### 5. Regression Summary Output
+
+![Regression Summary](screenshots/regression_summary.png)
+
+Full OLS regression output including:
+
+- Coefficients  
+- Standard errors  
+- t-statistics  
+- p-values  
+- Confidence intervals  
+- Model fit statistics  
+- Information criteria (AIC/BIC)  
+
+---
+
+### 6. Extended Regression Diagnostics
+
+![Regression Summary Extended](screenshots/regression_summary2.png)
+
+Includes multicollinearity indicators (Condition Number) and inference notes.
+
+---
+
+### 7. Residual Diagnostics
+
+![Residuals vs Fitted](screenshots/residuals_vs_fitted.png)
+
+Residual analysis verifies:
+
+- Linearity  
+- Homoscedasticity  
+- Random error structure  
+
+---
+
+### 8. Q-Q Normality Check
+
+![Q-Q Plot](images/qqplot.png)
+
+Assesses residual normality using theoretical quantiles.
+
+---
+
+### 9. Full Diagnostic Dashboard
+
+![Diagnostics Dashboard](screenshots/diagnostics.png)
+
+Includes:
+
+- Residuals vs Fitted  
+- Q-Q Plot  
+- Predicted vs Actual  
+- Leverage vs Cook’s Distance  
+
+---
+
+### 10. Automated Analytical Insights
+
+![Analyst Chat](screenshots/analystchat.png)
+
+The system generates structured analytical commentary including:
+
+- Normality tests  
+- Heteroskedasticity checks  
+- Multicollinearity warnings  
+- Influence diagnostics  
+- Ridge stabilization recommendations  
+
+---
+
+### 11. Extended Insight Output
+
+![Analyst Chat Extended](screenshots/analystchat2.png)
+
+Summarizes:
+
+- Significant predictors  
+- Model validity  
+- Stability assessment  
+- Final recommendation  
