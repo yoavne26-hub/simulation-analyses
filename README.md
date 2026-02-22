@@ -280,10 +280,3 @@ The goal was not only to build a functioning system, but to demonstrate discipli
 
 ---
 
-### Launch Locally
-
-```bash
-python webapp.py
-
----
-
