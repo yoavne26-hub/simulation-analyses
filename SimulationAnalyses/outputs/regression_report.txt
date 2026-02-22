@@ -1,0 +1,36 @@
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:          total_revenue   R-squared:                       0.983
+Model:                            OLS   Adj. R-squared:                  0.975
+Method:                 Least Squares   F-statistic:                     125.1
+Date:                Sun, 18 Jan 2026   Prob (F-statistic):           9.81e-11
+Time:                        17:35:32   Log-Likelihood:                -211.63
+No. Observations:                  20   AIC:                             437.3
+Df Residuals:                      13   BIC:                             444.2
+Df Model:                           6                                         
+Covariance Type:            nonrobust                                         
+===============================================================================================================
+                                                  coef    std err          t      P>|t|      [0.025      0.975]
+---------------------------------------------------------------------------------------------------------------
+const                                        4.847e+05    3.7e+05      1.309      0.213   -3.15e+05    1.28e+06
+avg_food_income                              1071.8312   1733.555      0.618      0.547   -2673.287    4816.949
+avg_reception_income                         -690.2236   2463.286     -0.280      0.784   -6011.829    4631.382
+avg_photo_income                            -7764.7243   4471.137     -1.737      0.106   -1.74e+04    1894.579
+scenario_ALT2 (Website+LargeTube=10) [250k]  5.324e+04   1.19e+04      4.477      0.001    2.75e+04    7.89e+04
+scenario_ALT3 (Marketing Only) [60k]        -1.041e+05   1.66e+04     -6.262      0.000    -1.4e+05   -6.82e+04
+scenario_ALT4 (Kitchen Quality Only) [100k] -8.179e+04   1.11e+04     -7.351      0.000   -1.06e+05   -5.78e+04
+==============================================================================
+Omnibus:                        0.099   Durbin-Watson:                   2.371
+Prob(Omnibus):                  0.952   Jarque-Bera (JB):                0.065
+Skew:                           0.062   Prob(JB):                        0.968
+Kurtosis:                       2.749   Cond. No.                     2.17e+04
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+[2] The condition number is large, 2.17e+04. This might indicate that there are
+strong multicollinearity or other numerical problems.
+Recommendations:
+- Condition number is large; check multicollinearity and consider removing or combining correlated features.
+- Consider rerunning with robust SE (e.g., HC3) if heteroskedasticity is suspected.
+- Collect more runs if estimates are unstable or p-values are near the threshold.

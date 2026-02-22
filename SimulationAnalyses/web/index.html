@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SeaWorld Simulation Studio</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="hero">
+      <div class="hero-content">
+        <p class="eyebrow">Industrial & Management Engineering</p>
+        <h1>SeaWorld Simulation Studio</h1>
+        <p class="subtitle">Run scenarios, generate data, and view regression diagnostics in one place.</p>
+        <div class="hero-actions">
+          <button id="runQuick" class="btn primary">Run Quick Simulation</button>
+          <button id="runFull" class="btn ghost">Run Full Simulation</button>
+        </div>
+      </div>
+      <div class="hero-card">
+        <div class="stat">
+          <span class="stat-label">Last Run</span>
+          <span id="lastRun" class="stat-value">None</span>
+        </div>
+        <div class="stat">
+          <span class="stat-label">Dataset</span>
+          <span id="datasetPath" class="stat-value">data/simulation_results.csv</span>
+        </div>
+        <div class="stat">
+          <span class="stat-label">Outputs</span>
+          <span id="outputPath" class="stat-value">outputs/</span>
+        </div>
+      </div>
+    </div>
+
+    <main class="layout">
+      <section class="panel">
+        <h2>Simulation Controls</h2>
+        <div class="form-grid">
+          <label>
+            Scenarios (checklist)
+            <div id="scenarioChecklist" class="checklist"></div>
+          </label>
+          <label>
+            Runs per scenario
+            <input id="runs" type="number" min="1" placeholder="5" />
+          </label>
+          <label>
+            Seed
+            <input id="seed" type="number" placeholder="102" />
+          </label>
+          <label>
+            Mode
+            <select id="mode">
+              <option value="quick">Quick</option>
+              <option value="full">Full</option>
+              <option value="custom">Custom</option>
+            </select>
+          </label>
+        </div>
+        <button id="runCustom" class="btn">Run Simulation</button>
+        <p id="runStatus" class="status"></p>
+      </section>
+
+      <section class="panel">
+        <h2>Regression Analysis</h2>
+        <div class="form-grid">
+          <label>
+            Target metric
+            <input id="target" type="text" value="total_revenue" />
+          </label>
+          <label>
+            Features (checklist)
+            <div id="featureChecklist" class="checklist"></div>
+          </label>
+          <label>
+            Robust SE (optional)
+            <input id="robust" type="text" placeholder="HC3" />
+          </label>
+          <label>
+            Ridge alpha (optional)
+            <input id="ridgeAlpha" type="number" step="0.1" placeholder="1.0" />
+          </label>
+          <label class="toggle">
+            <input id="ridgeAuto" type="checkbox" />
+            Auto ridge alpha (CV)
+          </label>
+          <label class="toggle">
+            <input id="boxCoxCheck" type="checkbox" />
+            Box-Cox check
+          </label>
+          <label class="toggle">
+            <input id="noPlots" type="checkbox" />
+            Skip plots
+          </label>
+        </div>
+        <button id="runAnalysis" class="btn primary">Run Analysis</button>
+        <p id="analysisStatus" class="status"></p>
+      </section>
+
+      <section class="panel wide">
+        <h2>Scenario Revenue Overview</h2>
+        <canvas id="barChart" height="180"></canvas>
+        <p class="hint">Shows average total revenue by scenario from the latest dataset.</p>
+      </section>
+
+      <section class="panel wide">
+        <h2>Regression Summary</h2>
+        <pre id="summary" class="summary">Run analysis to see the model output.</pre>
+      </section>
+
+      <section class="panel wide">
+        <h2>Diagnostics</h2>
+        <div id="plots" class="plot-grid"></div>
+      </section>
+
+      <section class="panel wide">
+        <h2>Analyst Chat</h2>
+        <div id="insights" class="insight-list">Run analysis to see conclusions.</div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <span>Local dashboard • No external network calls</span>
+    </footer>
+
+    <div id="loadingOverlay" class="overlay hidden">
+      <div class="overlay-card">
+        <div class="spinner"></div>
+        <div class="overlay-text">
+          <h3>Running simulation...</h3>
+          <p id="overlayStatus">Preparing run</p>
+          <div class="overlay-progress">
+            <div class="progress-track">
+              <div id="overlayProgressBar" class="progress-bar"></div>
+            </div>
+            <div class="progress-meta">
+              <span id="overlayProgressText">0 / 0</span>
+              <span id="overlayEta">ETA --</span>
+              <span id="overlayElapsed">Elapsed --</span>
+            </div>
+          </div>
+          <div class="overlay-details">
+            <div>
+              <span class="detail-label">Scenario</span>
+              <span id="overlayScenario" class="detail-value">-</span>
+            </div>
+            <div>
+              <span class="detail-label">Run</span>
+              <span id="overlayRun" class="detail-value">-</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="/app.js"></script>
+  </body>
+</html>
+
