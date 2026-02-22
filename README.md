@@ -57,26 +57,82 @@ Simulation Engine → Dataset Generator → Regression Pipeline → Diagnostics 
 
 ## Simulation Engine
 
-The system models multiple operational alternatives:
+### Mathematical Structure
 
-- BASE  
-- ALT1–ALT10  
+The system models a discrete-event stochastic environment representing a theme-park-style operational ecosystem.
 
-Each simulation run generates:
+Each visitor is treated as an independent stochastic entity generated through a Monte Carlo process. For each replication:
 
-- avg_rating  
-- avg_food_income  
-- total_customers  
-- total_revenue  
-- additional operational metrics  
+1. A random arrival process generates N visitors.
+2. Each visitor passes through probabilistic service interactions.
+3. Revenue components are generated through conditional probability structures.
+4. Aggregated system-level metrics are computed.
 
-Key features:
+Formally, for visitor i:
 
-- Configurable random seed control  
-- Multiple replications per scenario  
-- Scenario-level investment modeling  
-- Automated ROI comparison  
-- Monte Carlo variability analysis  
+- Food revenue ~ Bernoulli(p_food) × Food_Spend
+- Photo revenue ~ Bernoulli(p_photo) × Photo_Spend
+- Reception revenue ~ Bernoulli(p_reception) × Reception_Spend
+- Satisfaction rating ~ f(service_quality, waiting_time, scenario_parameters)
+
+Total revenue per run is computed as:
+
+Total_Revenue = Σᵢ (Foodᵢ + Photoᵢ + Receptionᵢ)
+
+Where the number of visitors and behavioral probabilities are scenario-dependent.
+
+---
+
+### Scenario Parameterization
+
+Each scenario (BASE, ALT1–ALT10) modifies structural parameters of the system, including:
+
+- Service efficiency multipliers
+- Marketing intensity
+- Website conversion rate
+- Quality investment effects
+- Operational cost adjustments
+
+These parameter shifts alter:
+
+- Expected customer volume
+- Conversion probabilities
+- Spending intensity
+- Satisfaction distributions
+
+Scenarios are therefore structural changes in the data-generating process, not merely categorical labels.
+
+---
+
+### Monte Carlo Replication
+
+For each scenario:
+
+- Multiple independent replications are executed.
+- Random seeds ensure reproducibility.
+- Cross-run variability is preserved.
+- Mean and dispersion metrics are computed.
+
+This produces an empirical distribution of system performance:
+
+E[Revenue | Scenario]
+Var(Revenue | Scenario)
+
+Enabling comparison under uncertainty rather than single deterministic outcomes.
+
+---
+
+### Output Metrics
+
+Each simulation replication produces:
+
+- avg_rating
+- avg_food_income
+- total_customers
+- total_revenue
+- auxiliary operational indicators
+
+These outputs form the dataset used for downstream econometric analysis. 
 
 ---
 
