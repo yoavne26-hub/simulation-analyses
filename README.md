@@ -114,15 +114,6 @@ The system computes:
 
 ---
 
-## Web Dashboard
-
-Launch locally:
-
-```bash
-python webapp.py
-
----
-
 ## Interface Preview
 
 ### 1. Home Screen
