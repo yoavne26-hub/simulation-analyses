@@ -3,20 +3,38 @@ Event-Driven Simulation with Statistical Modeling and Diagnostic Analytics
 
 ---
 
+## Motivation
+
+This project was built to integrate multiple domains of expertise into a unified analytical system.
+
+It combines:
+
+- Event-driven simulation (Monte Carlo methodology)
+- Linear regression and econometric diagnostics
+- Statistical inference and model validation
+- Python-based data pipelines
+- JavaScript and HTML for interactive web interfaces
+
+The objective was to design a full analytical workflow: simulate operational scenarios, generate structured datasets, model revenue drivers statistically, and present insights through a clean, interactive interface.
+
+Rather than treating simulation and regression as separate academic exercises, this project connects them into a single decision-support tool.
+
+---
+
 ## Overview
 
-This project implements an event-driven simulation engine for modeling operational performance across multiple business scenarios and applies advanced regression diagnostics to analyze revenue drivers.
+This system implements an event-driven simulation engine for modeling operational performance across multiple business scenarios and applies advanced regression diagnostics to analyze revenue drivers.
 
-The system integrates simulation, statistical inference, econometric diagnostics, regularization techniques, and visualization into a complete analytical pipeline.
+The platform integrates simulation, statistical modeling, inference validation, regularization techniques, and visualization into a cohesive analytical pipeline.
 
 The project demonstrates applied knowledge in:
 
 - Operations Research  
-- Statistical Inference  
+- Statistical Modeling  
 - Econometrics  
+- Monte Carlo Simulation  
 - Machine Learning Stabilization  
-- Simulation Modeling  
-- Data Pipeline Engineering  
+- Data Engineering and Visualization  
 
 ---
 
@@ -24,27 +42,27 @@ The project demonstrates applied knowledge in:
 
 Simulation Engine → Dataset Generator → Regression Pipeline → Diagnostics → Visualization → Web Dashboard
 
-### Components
+### Core Components
 
 | Module | Responsibility |
 |--------|---------------|
-| SeaWorldSimulation.py | Event-driven simulation core |
-| simulate.py | Multi-run dataset generator |
-| analyze.py | OLS modeling and diagnostics |
+| SeaWorldSimulation.py | Event-driven simulation engine |
+| simulate.py | Multi-run dataset generation |
+| analyze.py | OLS modeling and statistical diagnostics |
 | webapp.py | Interactive dashboard |
-| SeaWorldLinearRegression.py | Legacy regression pipeline |
-| requirements.txt | Dependencies |
+| SeaWorldLinearRegression.py | Legacy regression workflow |
+| requirements.txt | Dependency management |
 
 ---
 
 ## Simulation Engine
 
-The system models multiple operational scenarios:
+The system models multiple operational alternatives:
 
 - BASE  
 - ALT1–ALT10  
 
-Each simulation run produces:
+Each simulation run generates:
 
 - avg_rating  
 - avg_food_income  
@@ -52,22 +70,30 @@ Each simulation run produces:
 - total_revenue  
 - additional operational metrics  
 
-Features:
+Key features:
 
-- Custom seed control  
-- Multiple replications  
-- Scenario-level investment parameters  
-- ROI comparison  
+- Configurable random seed control  
+- Multiple replications per scenario  
+- Scenario-level investment modeling  
+- Automated ROI comparison  
+- Monte Carlo variability analysis  
 
 ---
 
 ## Regression Base Model
 
-Primary model:
+Primary specification:
 
 Total Revenue = β₀ + β₁(avg_rating) + β₂(avg_food_income) + β₃(total_customers)
 
-Implemented using statsmodels OLS.
+Implemented using `statsmodels` OLS.
+
+The model can optionally incorporate:
+
+- Robust standard errors (HC3)
+- Ridge regularization
+- Box–Cox transformation checks
+- Automatic ridge parameter selection (cross-validation)
 
 ---
 
@@ -77,12 +103,13 @@ Implemented using statsmodels OLS.
 - R-squared  
 - Adjusted R-squared  
 - F-statistic  
+- AIC / BIC  
 
 ### Inference
 - t-tests  
 - p-values  
 - Confidence intervals  
-- Robust standard errors (HC3 support)  
+- Robust covariance estimation  
 
 ### Residual Analysis
 - Residuals vs Fitted  
@@ -94,12 +121,12 @@ Implemented using statsmodels OLS.
 
 ### Multicollinearity
 - Condition number  
-- Ridge regression stabilization  
-- Automatic Ridge alpha selection  
+- Ridge stabilization  
+- Cross-validated ridge alpha  
 
 ### Influence Diagnostics
 - Cook’s Distance  
-- Leverage metrics  
+- Leverage analysis  
 
 ---
 
@@ -108,12 +135,15 @@ Implemented using statsmodels OLS.
 The system computes:
 
 - Mean revenue per scenario  
-- Investment cost comparison  
-- ROI per dollar invested  
-- Best-performing scenario identification  
+- Investment-adjusted comparisons  
+- Revenue ranking across alternatives  
+- Scenario-level performance diagnostics  
+
+This enables structured comparison of operational strategies under uncertainty.
 
 ---
-# Main Screen
+
+# Main Interface
 
 ## Interface Preview
 
@@ -121,17 +151,19 @@ The system computes:
 
 ![Home Screen](screenshots/simuhome.png)
 
-The main dashboard provides centralized control for running simulations and executing regression analysis.  
-Users can select scenarios, configure replication count, define seeds, and toggle advanced modeling options such as robust standard errors and ridge regularization.
+The dashboard centralizes simulation execution and regression configuration.  
+Users can select scenarios, define replication counts, configure modeling options, and trigger analysis in a single environment.
 
 ---
 
-### 2. Simulation Controls & Regression Panel
+### 2. Simulation & Modeling Controls
 
 ![Simulation Controls](screenshots/simuhome2.png)
 
-The interface separates operational simulation controls from econometric configuration.  
-This enforces a clean workflow: generate data → specify model → run diagnostics.
+Operational parameters and econometric specifications are clearly separated.  
+This enforces a disciplined workflow:
+
+Simulation → Data Generation → Model Specification → Diagnostic Evaluation
 
 ---
 
@@ -139,15 +171,12 @@ This enforces a clean workflow: generate data → specify model → run diagnost
 
 ![Simulation Loading](screenshots/loading_simu.png)
 
-During execution, the system displays:
+During Monte Carlo execution, the system provides:
 
-- Current scenario  
-- Run index  
-- Total runs  
+- Scenario tracking  
+- Replication progress  
 - Estimated time remaining  
-- Progress tracking  
-
-This enables transparency during long Monte Carlo runs.
+- Execution transparency  
 
 ---
 
@@ -155,8 +184,7 @@ This enables transparency during long Monte Carlo runs.
 
 ![Scenario Revenue Overview](screenshots/scenario_revenue_overview.png)
 
-Aggregated scenario-level revenue comparison.  
-Supports ROI evaluation and investment strategy comparison.
+Aggregated scenario-level comparison supporting structured ROI analysis and strategic evaluation.
 
 ---
 
@@ -164,23 +192,15 @@ Supports ROI evaluation and investment strategy comparison.
 
 ![Regression Summary](screenshots/regression_summary.png)
 
-Full OLS regression output including:
-
-- Coefficients  
-- Standard errors  
-- t-statistics  
-- p-values  
-- Confidence intervals  
-- Model fit statistics  
-- Information criteria (AIC/BIC)  
+Comprehensive OLS output including coefficient estimates, statistical significance, and global model diagnostics.
 
 ---
 
-### 6. Extended Regression Diagnostics
+### 6. Extended Diagnostics
 
 ![Regression Summary Extended](screenshots/regression_summary2.png)
 
-Includes multicollinearity indicators (Condition Number) and inference notes.
+Highlights multicollinearity indicators and model stability considerations.
 
 ---
 
@@ -188,65 +208,82 @@ Includes multicollinearity indicators (Condition Number) and inference notes.
 
 ![Residuals vs Fitted](screenshots/residuals_vs_fitted.png)
 
-Residual analysis verifies:
-
-- Linearity  
-- Homoscedasticity  
-- Random error structure  
+Validates linearity assumptions and homoscedastic error behavior.
 
 ---
 
-### 8. Q-Q Normality Check
+### 8. Q-Q Normality Assessment
 
 ![Q-Q Plot](screenshots/qqplot.png)
 
-Assesses residual normality using theoretical quantiles.
+Evaluates residual distribution consistency with normality assumptions.
 
 ---
 
-### 9. Full Diagnostic Dashboard
+### 9. Diagnostic Dashboard
 
 ![Diagnostics Dashboard](screenshots/diagnostics.png)
 
-Includes:
+Consolidates multiple diagnostic views:
 
-- Residuals vs Fitted  
-- Q-Q Plot  
-- Predicted vs Actual  
-- Leverage vs Cook’s Distance  
+- Residual structure  
+- Prediction accuracy  
+- Influence and leverage analysis  
 
 ---
 
-### 10. Automated Analytical Insights
+### 10. Automated Analytical Commentary
 
 ![Analyst Chat](screenshots/analystchat.png)
 
-The system generates structured analytical commentary including:
+The system generates structured analytical interpretations, including:
 
-- Normality tests  
-- Heteroskedasticity checks  
+- Normality checks  
+- Heteroskedasticity testing  
 - Multicollinearity warnings  
-- Influence diagnostics  
-- Ridge stabilization recommendations  
+- Ridge recommendations  
+- Model validity summary  
 
 ---
 
-### 11. Extended Insight Output
+### 11. Extended Insight Summary
 
 ![Analyst Chat Extended](screenshots/analystchat2.png)
 
-Summarizes:
+Provides final recommendations based on statistical evidence and stability considerations.
 
-- Significant predictors  
-- Model validity  
-- Stability assessment  
-- Final recommendation
+---
 
-  ---
+## Analytical Note
 
-## Launch Yourself
+From a modeling perspective, scenario alternatives ideally should be encoded as categorical variables when predicting future experiments or unseen configurations.  
 
-Launch locally:
+In its current implementation, this system is primarily structured as a comparative decision-support tool across predefined alternatives.  
+
+It excels at:
+
+- Evaluating operational strategies  
+- Comparing investment scenarios  
+- Diagnosing model validity  
+- Interpreting statistical robustness  
+
+While not a full predictive production model, it provides a rigorous framework for structured alternative analysis under uncertainty.
+
+---
+# Personal Note
+
+This project represents an attempt to bridge theoretical knowledge and practical implementation.
+
+It integrates simulation theory, statistical inference, and web-based interaction into a unified analytical tool.
+
+The goal was not only to build a functioning system, but to demonstrate disciplined modeling, diagnostic awareness, and thoughtful interpretation of results.
+
+---
+
+### Launch Locally
 
 ```bash
 python webapp.py
+
+---
+
