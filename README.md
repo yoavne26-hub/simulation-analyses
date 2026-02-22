@@ -138,8 +138,6 @@ These outputs form the dataset used for downstream econometric analysis.
 
 ## Regression Base Model
 
----
-
 ## Econometric Modeling Framework
 
 ### Model Specification
