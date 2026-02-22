@@ -138,22 +138,52 @@ These outputs form the dataset used for downstream econometric analysis.
 
 ## Regression Base Model
 
-Primary specification:
+## Econometric Modeling Framework
 
-Total Revenue = β₀ + β₁(avg_rating) + β₂(avg_food_income) + β₃(total_customers)
+### Model Specification
 
-Implemented using `statsmodels` OLS.
+After generating Monte Carlo simulation data, an Ordinary Least Squares (OLS) model is estimated to analyze structural relationships between operational metrics and revenue outcomes.
 
-The model can optionally incorporate:
+Baseline specification:
 
-- Robust standard errors (HC3)
-- Ridge regularization
-- Box–Cox transformation checks
-- Automatic ridge parameter selection (cross-validation)
+Total_Revenue = β₀ 
+               + β₁(avg_rating)
+               + β₂(avg_food_income)
+               + β₃(total_customers)
+               + ε
+
+Where:
+
+- Revenue is an aggregated outcome from the simulation engine  
+- Explanatory variables are simulation-generated operational metrics  
+- ε represents residual variation across replications  
+
+This regression serves as:
+
+- Sensitivity analysis of revenue drivers  
+- Stability assessment across simulation runs  
+- Diagnostic validation of structural relationships  
+
+It is not intended as a production forecasting model, but as an econometric examination of the simulated data-generating process.
 
 ---
 
-## Statistical Diagnostics Included
+### Robustness & Stabilization Options
+
+The model supports:
+
+- Heteroskedasticity-robust standard errors (HC3)
+- Ridge regularization for multicollinearity stabilization
+- Automatic ridge parameter selection via cross-validation
+- Optional Box–Cox transformation checks
+
+These extensions allow evaluation of inference robustness under potential assumption violations.
+
+---
+
+## Statistical Diagnostics
+
+The regression pipeline includes comprehensive diagnostic evaluation.
 
 ### Model Fit
 - R-squared  
@@ -167,7 +197,7 @@ The model can optionally incorporate:
 - Confidence intervals  
 - Robust covariance estimation  
 
-### Residual Analysis
+### Residual Diagnostics
 - Residuals vs Fitted  
 - Q-Q Plot  
 - Jarque–Bera normality test  
@@ -180,22 +210,26 @@ The model can optionally incorporate:
 - Ridge stabilization  
 - Cross-validated ridge alpha  
 
-### Influence Diagnostics
+### Influence Analysis
 - Cook’s Distance  
-- Leverage analysis  
+- Leverage metrics  
+
+The system additionally generates automated analytical commentary interpreting these diagnostics.
 
 ---
 
-## Scenario ROI Analysis
+## Scenario ROI Evaluation
 
-The system computes:
+Beyond regression modeling, the system computes scenario-level performance metrics:
 
-- Mean revenue per scenario  
+- Mean revenue per alternative  
 - Investment-adjusted comparisons  
-- Revenue ranking across alternatives  
-- Scenario-level performance diagnostics  
+- Revenue ranking across strategies  
+- ROI per unit of capital invested  
 
-This enables structured comparison of operational strategies under uncertainty.
+This enables structured comparison of operational strategies under stochastic uncertainty.
+
+The primary goal is decision-support under simulated variability rather than pure predictive modeling.
 
 ---
 
