@@ -359,14 +359,15 @@ While not intended as a production forecasting engine, it provides rigorous comp
 
 # Personal Reflection
 
-This project reflects the transition from theoretical modeling to integrated analytical system design.
+This project represents a point where theory stopped being abstract and started becoming operational.
 
-It emphasizes:
+Throughout my studies in Industrial Engineering and Management, I learned simulation, regression analysis, statistical inference, and optimization as separate tools. In this project, I deliberately chose to connect them into a single coherent system. Instead of solving a predefined exercise, I built an environment where assumptions, parameters, uncertainty, and diagnostics interact in a structured way.
 
-- Structural thinking  
-- Statistical discipline  
-- Diagnostic rigor  
-- Numerical stability awareness  
-- Scalable scenario experimentation  
+Designing the simulation forced me to think carefully about how behavioral mechanisms translate into measurable outcomes. Implementing the regression layer required me to question not only whether the model “fits,” but whether it is numerically stable, statistically valid, and structurally interpretable. The diagnostics stage pushed me to evaluate the assumptions behind the numbers rather than accepting them at face value.
 
-The objective was not merely to achieve high R² values, but to evaluate model stability, interpretability, and robustness in a controlled stochastic environment.
+What I value most in this project is not the near-perfect R², but the process behind it: anticipating multicollinearity before seeing it, verifying residual behavior instead of assuming linearity, testing robustness with ridge regularization, and comparing alternatives under uncertainty rather than relying on deterministic outputs.
+
+This system reflects how I approach analytical problems:
+I prefer building controlled experimental environments, understanding the structure behind the data, and validating conclusions with discipline rather than intuition alone.
+
+For me, this project is less about predicting revenue and more about demonstrating how simulation modeling and econometric reasoning can coexist within a rigorous, interpretable decision-support framework.
