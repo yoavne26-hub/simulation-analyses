@@ -355,8 +355,27 @@ What it shows:
 - Random dispersion around zero  
 - No visible curvature  
 - No funnel-shaped variance pattern  
+- Mild clustering into groups across fitted value ranges  
 
-Interpretation: The linear specification appears appropriate, and there is no strong evidence of heteroskedasticity or functional misspecification.
+The apparent grouping pattern likely reflects the presence of multiple structural alternatives (BASE, ALT1–ALT10).  
+Since each scenario modifies underlying behavioral parameters (conversion rates, efficiency multipliers, capacity adjustments), the fitted values naturally cluster by scenario. In other words, the regression is applied to pooled data generated from structurally different regimes.
+
+Interpretation:
+
+The linear specification appears appropriate overall, and there is no strong evidence of global heteroskedasticity or functional misspecification. However, the visible grouping suggests that residual structure may partially reflect scenario-level heterogeneity.
+
+From a classical linear regression perspective, there are several standard ways to address or formally test this type of structure:
+
+- Include explicit scenario dummy variables (already implemented in the model)  
+- Allow interaction terms between scenario indicators and key predictors  
+- Use heteroskedasticity-robust standard errors (e.g., HC3)  
+- Apply clustered standard errors at the scenario level  
+- Estimate separate regressions per scenario for structural comparison  
+- Introduce hierarchical or mixed-effects models if treating scenarios as higher-level groups  
+
+In this implementation, scenario dummies are included, and robustness checks (including ridge regularization and diagnostic testing) confirm that the overall specification remains stable.
+
+Thus, while residual clustering reflects structural heterogeneity across alternatives, it does not invalidate the linear framework. Instead, it confirms that scenario shifts meaningfully influence fitted revenue levels, which is consistent with the simulation design.
 
 ---
 
