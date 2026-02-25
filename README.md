@@ -51,6 +51,79 @@ Simulation Engine → Dataset Generator → Regression Pipeline → Diagnostics 
 
 ---
 
+# Interface and Visualization
+
+## Home Screen
+
+![Home Screen](screenshots/simuhome.png)
+
+Centralized control for simulation and modeling.
+
+---
+
+## Simulation Controls
+
+![Simulation Controls](screenshots/simuhome2.png)
+
+Clear separation between operational simulation and econometric configuration.
+
+---
+
+## Simulation Execution
+
+![Simulation Loading](screenshots/loading_simu.png)
+
+Transparent Monte Carlo progress tracking.
+
+---
+
+## Regression Output
+
+![Regression Summary](screenshots/regression_summary.png)
+
+Full OLS summary including:
+
+- Coefficients  
+- t-values  
+- p-values  
+- Confidence intervals  
+- AIC/BIC  
+
+---
+
+## Extended Summary
+
+![Regression Summary Extended](screenshots/regression_summary2.png)
+
+Includes multicollinearity warnings and interpretive notes.
+
+---
+
+## Automated Analytical Commentary
+
+![Analyst Chat](screenshots/analystchat.png)
+
+Structured interpretation of:
+
+- Normality  
+- Heteroskedasticity  
+- Multicollinearity  
+- Ridge recommendations  
+
+---
+
+## Scenario Revenue Overview
+
+![Scenario Revenue Overview](screenshots/scenario_revenue_overview.png)
+
+ALT2 (Website + LargeTube investment) produces the highest mean revenue.
+
+Structural improvements affecting demand flow and capacity yield greater returns than marginal efficiency changes.
+
+The system supports dynamic comparison of 10+ alternatives and can scale further without architectural modification.
+
+---
+
 # Simulation Engine
 
 ## Mathematical Structure
@@ -255,79 +328,6 @@ No replication dominates estimation.
 Leverage dispersion appears moderate.
 
 The regression appears stable across simulation runs.
-
----
-
-## Scenario Comparative Results
-
-![Scenario Revenue Overview](screenshots/scenario_revenue_overview.png)
-
-ALT2 (Website + LargeTube investment) produces the highest mean revenue.
-
-Structural improvements affecting demand flow and capacity yield greater returns than marginal efficiency changes.
-
-The system supports dynamic comparison of 10+ alternatives and can scale further without architectural modification.
-
----
-
-# Interface and Visualization
-
-## Home Screen
-
-![Home Screen](screenshots/simuhome.png)
-
-Centralized control for simulation and modeling.
-
----
-
-## Simulation Controls
-
-![Simulation Controls](screenshots/simuhome2.png)
-
-Clear separation between operational simulation and econometric configuration.
-
----
-
-## Simulation Execution
-
-![Simulation Loading](screenshots/loading_simu.png)
-
-Transparent Monte Carlo progress tracking.
-
----
-
-## Regression Output
-
-![Regression Summary](screenshots/regression_summary.png)
-
-Full OLS summary including:
-
-- Coefficients  
-- t-values  
-- p-values  
-- Confidence intervals  
-- AIC/BIC  
-
----
-
-## Extended Summary
-
-![Regression Summary Extended](screenshots/regression_summary2.png)
-
-Includes multicollinearity warnings and interpretive notes.
-
----
-
-## Automated Analytical Commentary
-
-![Analyst Chat](screenshots/analystchat.png)
-
-Structured interpretation of:
-
-- Normality  
-- Heteroskedasticity  
-- Multicollinearity  
-- Ridge recommendations  
 
 ---
 
